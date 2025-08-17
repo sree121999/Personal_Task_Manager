@@ -21,7 +21,7 @@ mongoose.connect('mongodb+srv://sree91336:fDAXsRhpRTkzVHUp@cluster0.onhd5ma.mong
 
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin:process.env.FRONTENDURL ,
    methods: ["GET", "POST", "PUT", "DELETE"],
    allowedHeaders: ["Content-Type"],
   credentials:true
