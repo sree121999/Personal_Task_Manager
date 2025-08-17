@@ -1,5 +1,5 @@
 const express=require('express')
-const serverless = require("serverless-http");
+
 const app=express()
 const cors=require('cors')
 require('dotenv').config()
@@ -55,8 +55,8 @@ app.listen(PORT,()=>{
 })
 
 
-module.exports = app;
-module.exports.handler = serverless(app);
+
+
 
 
 
