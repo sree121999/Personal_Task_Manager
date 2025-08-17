@@ -35,6 +35,10 @@ app.use(cookieparser())
 app.use('/',userRouter)
 app.use('/api',Taskrouter)
 
+app.get('/',(req,res)=>{
+    res.json('hellow world')
+})
+
 
 
 
