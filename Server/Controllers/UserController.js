@@ -52,7 +52,7 @@ if(!ismatch){
 
 const payload={userExist:{id:userExist._id}}
 const token=jwt.sign(payload,process.env.TOKEN,{expiresIn:'1h'})
-res.cookie("token", token)
+
   
 
 

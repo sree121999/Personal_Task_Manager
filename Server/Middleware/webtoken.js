@@ -1,16 +1,22 @@
 const jwt = require("jsonwebtoken");
 
-function authmiddleware(req, res, next) {
-  const token = req.cookies?.token;
-  if (!token) return res.status(401).json({ error: "Access denied. No token found." });
+app.post("/api/login", async (req, res) => {
+  const { email, password } = req.body;
 
-  try {
-    const decoded = jwt.verify(token, process.env.TOKEN);
-    req.user = { id: decoded.userId };
-    next();
-  } catch (err) {
-    res.status(403).json({ error: "Invalid or expired token" });
-  }
-}
 
-module.exports = authmiddleware;
+  const user = await User.findOne({ email });
+  if (!user) return res.status(401).json({ error: "Invalid credentials" });
+
+  
+  const token = jwt.sign({ userId: user._id }, process.env.TOKEN, { expiresIn: "1d" });
+
+  
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production", 
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    path: "/",
+  });
+
+  res.json({ message: "Login successful" });
+});
