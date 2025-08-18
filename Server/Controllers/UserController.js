@@ -52,11 +52,8 @@ if(!ismatch){
 
 const payload={userExist:{id:userExist._id}}
 const token=jwt.sign(payload,process.env.TOKEN,{expiresIn:'1h'})
-res.cookie("token", token, {
-  httpOnly: true,
-  sameSite: "lax",
-  secure: false,      
-});
+res.cookie("token", token)
+  
 
 
 res.status(200).json({message:"login successfully",userExist,token})
