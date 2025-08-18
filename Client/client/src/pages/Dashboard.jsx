@@ -15,12 +15,12 @@ const Dashboard=()=>{
       listtasks().then((res)=>{
             
             console.log("🔎 Raw response from listtasks:", res);
-      console.log("🔎 Response data:", res.data);
-      console.log("🔎 alltask:", res.data?.alltask);
+      console.log("🔎 Response data:", res?.data);
+      console.log("🔎 alltask:", res?.data?.alltask);
 
 
 
-            settasks(res.data.alltask ||[])
+            settasks(res?.data?.alltask ||[])
         }).catch(err=>console.log(err))
 
     },[])
@@ -36,7 +36,7 @@ const Dashboard=()=>{
             
 
         <div className="bg-base-200 grid grid-cols-1 md:grid-cols-3 gap-3  ">
-           {Array.isArray(tasks) && tasks.length > 0 ? (
+           {Array?.isArray(tasks) && tasks.length > 0 ? (
     tasks.map((task) => (
       <Card key={task._id} task={task} taskid={task._id} />
     ))

@@ -18,7 +18,7 @@ const Login=()=>{
 
 
     }).catch(err=>{console.log('error',err)
-      toast.error(err.response.data.error,{position:'top-center'})
+      toast.error(err?.response?.data?.error,{position:'top-center'})
     })
 
   }

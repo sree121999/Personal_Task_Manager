@@ -20,7 +20,7 @@ useEffect(()=>{
       getone(id)
         .then((res) => {
             console.log("Task fetched:", res.data.getone)
-          const task = res.data.getone
+          const task = res?.data?.getone
           setTitle(task.title);
           setDescription(task.description);
           setStatus(task.status);
@@ -48,7 +48,7 @@ useEffect(()=>{
         navigate('/dashboard')
 
     }).catch(error=>{console.log(error)
-toast.error(error.response.data.error,{position:'top-center'})})
+toast.error(error?.response?.data?.error,{position:'top-center'})})
 
   }
 

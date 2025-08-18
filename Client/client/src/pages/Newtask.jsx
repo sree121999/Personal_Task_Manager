@@ -22,7 +22,7 @@ const Newtask=()=>{
       navigate('/dashboard')
 
     }).catch(error=>{console.log(error)
-  toast.error(error.response.data.error,{position:'top-center'})})
+  toast.error(error?.response?.data?.error,{position:'top-center'})})
 
   }
 

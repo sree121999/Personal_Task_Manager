@@ -22,7 +22,7 @@ const Register=()=>{
             navigate('/')
 
         }).catch(err=>{console.log(err,'error')
-          toast.error(err.response.data.error,{position:'top-center'})
+          toast.error(err?.response?.data?.error,{position:'top-center'})
         }
       )
 
